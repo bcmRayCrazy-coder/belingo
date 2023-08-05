@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "my-nextron-app",
-  "description": "My application description",
+  "name": "belingo",
+  "description": "一个代码岛三客户端",
   "version": "1.0.0",
-  "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
+  "author": "bcmray <975875040@qq.com>",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
