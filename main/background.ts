@@ -1,6 +1,8 @@
-import { app } from 'electron';
+import { app, ipcMain } from 'electron';
 import serve from 'electron-serve';
 import { createWindow, listenAPI } from './helpers';
+import { store } from './helpers/store';
+import { IpcStoreRendererArgs } from '../share/ipc/IpcStoreArgs';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -25,7 +27,12 @@ if (isProd) {
         await mainWindow.loadURL(`http://localhost:${port}/home`);
         mainWindow.webContents.openDevTools();
     }
+
     listenAPI();
+    ipcMain.handle('store', (event, args: IpcStoreRendererArgs) => {
+        if (args.type == 'get') return store.get(args.key);
+        return store.set(args.key, args.value);
+    });
 })();
 
 app.on('window-all-closed', () => {
