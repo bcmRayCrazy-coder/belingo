@@ -55,3 +55,9 @@ export interface LoginBack {
     error: boolean;
     data?: AccountInfo | 0;
 }
+
+export type Auth2CookieBack = boolean;
+export interface FetchAccountInfoBack {
+    error: boolean;
+    data?: AccountInfo | 0;
+}

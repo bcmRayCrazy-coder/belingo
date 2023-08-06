@@ -9,6 +9,5 @@ export let service = wrapper(
     axios.create({
         withCredentials: true,
         jar,
-        baseURL: 'https://backend.box3.fun',
     }),
 );
