@@ -5,10 +5,12 @@ import Typography from '@mui/material/Typography';
 import { Card, CardContent, Grid, TextField, styled } from '@mui/material';
 import HourglassIcon from '@material-ui/icons/HourglassEmpty';
 import styles from './login.module.css';
-import { login } from '../lib/api/account';
+import { auth2cookie, login } from '../lib/api/account';
 import { ipcRenderer } from 'electron';
 import { LoginBack } from '../../share/api';
 import theme from '../lib/theme';
+import { getStore, setStore } from '../lib/store';
+import Router from 'next/router';
 
 const Root = styled('div')(({ theme }) => {
     return {
@@ -34,14 +36,31 @@ function Login() {
             setTip('请输入账号密码');
             return;
         }
-        login(account, password).then((v: LoginBack) => {
-            if (v.error) {
+        login(account, password).then((response: LoginBack) => {
+            if (response.error || !response.data) {
                 setLoggingIn(false);
                 setTip('账号不存在或密码错误!');
+                return;
             }
-            console.log(v);
+            setStore('login', true);
+            setStore('account', {
+                info: JSON.stringify(response.data),
+                name: response.data.displayname,
+                token: response.data.token,
+            });
         });
     }
+
+    async function checkLogin() {
+        if (!(await getStore('login'))) return;
+        // 刷新cookie
+        if (!(await auth2cookie(await getStore('account.token'))))
+            return setTip('登陆状态失效, 请重新登陆');
+        console.log('用户已登陆');
+        Router.push('/main');
+    }
+
+    checkLogin();
 
     return (
         <React.Fragment>

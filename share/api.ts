@@ -53,11 +53,11 @@ export interface AccountInfo {
 
 export interface LoginBack {
     error: boolean;
-    data?: AccountInfo | 0;
+    data?: AccountInfo;
 }
 
 export type Auth2CookieBack = boolean;
 export interface FetchAccountInfoBack {
     error: boolean;
-    data?: AccountInfo | 0;
+    data?: AccountInfo;
 }
