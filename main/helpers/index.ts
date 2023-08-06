@@ -1,5 +1,4 @@
-import createWindow from './create-window';
+import createWindow from './createWindow';
+import listenAPI from './listenAPI';
 
-export {
-  createWindow,
-};
+export { createWindow, listenAPI };

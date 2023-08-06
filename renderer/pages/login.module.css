@@ -1,0 +1,16 @@
+.root {
+    flex-grow: 1;
+    margin: auto 0;
+}
+
+.loginWrapper {
+    width: 70%;
+}
+
+.inputWrapper {
+    width: 70%;
+}
+
+.input {
+    width: 100%;
+}
