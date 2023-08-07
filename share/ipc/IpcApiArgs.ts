@@ -7,6 +7,7 @@ import {
     FetchAccountInfoRendererArgs,
 } from './api/FetchAccountInfoArgs';
 import { LoginMainArgs, LoginRendererArgs } from './api/LoginArgs';
+import { PlayListMainArgs, PlayListRendererArgs } from './api/PlayListArgs';
 
 /**
  * 从Renderer发送的args
@@ -14,12 +15,14 @@ import { LoginMainArgs, LoginRendererArgs } from './api/LoginArgs';
 export type IpcRendererApiArgs =
     | LoginRendererArgs
     | Auth2CookieRendererArgs
-    | FetchAccountInfoRendererArgs;
+    | FetchAccountInfoRendererArgs
+    | PlayListRendererArgs;
 
 /**
  * 从Main发送的args
  */
-export type IpcMainApiArgs =
-    | LoginMainArgs
-    | Auth2CookieMainArgs
-    | FetchAccountInfoMainArgs;
+// export type IpcMainApiArgs =
+//     | LoginMainArgs
+//     | Auth2CookieMainArgs
+//     | FetchAccountInfoMainArgs
+//     | PlayListMainArgs;

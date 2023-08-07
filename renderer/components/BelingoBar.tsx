@@ -1,5 +1,6 @@
 import {
     AppBar,
+    Avatar,
     Menu,
     MenuItem,
     Slide,
@@ -71,7 +72,8 @@ export default function BelingoBar(props: {
                             onClick={handleMenu}
                             color="inherit"
                             startIcon={
-                                <img
+                                <Avatar
+                                    alt="头像"
                                     src={props.avatar}
                                     className={styles.avatar}
                                 />
